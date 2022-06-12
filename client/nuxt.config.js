@@ -11,8 +11,14 @@ export default {
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
 
+  vite: {
+    define: {
+      'process.env.DEBUG': false,
+    },
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ["vuetify/lib/styles/main.sass", 'mdi/css/materialdesignicons.min.css',],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -76,5 +82,7 @@ export default {
   content: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    transpile: ["vuetify"],
+  },
 };

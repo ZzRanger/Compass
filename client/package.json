@@ -16,10 +16,13 @@
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.19.3",
     "firebase": "^9.8.3",
+    "mdi": "^2.2.43",
     "nuxt": "^2.15.8",
+    "sass": "^1.52.3",
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",
     "vue-template-compiler": "^2.6.14",
+    "vuetify": "^3.0.0-beta.3",
     "webpack": "^4.46.0"
   },
   "devDependencies": {
