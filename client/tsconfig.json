@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+
+      "jsx": "react",
+
     "target": "ES2018",
     "module": "ESNext",
     "moduleResolution": "Node",

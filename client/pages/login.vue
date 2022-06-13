@@ -2,15 +2,15 @@
   <div class="flex flex-row">
     <div class="w-1/3 flex items-center justify-center px-24 py-24">
       <NuxtLink
-        to="/login"
+        to="/"
         class="px-4 py-2 font-medium text-4xl text-white capitalize transition-colors duration-200 transform bg-green-400 rounded-md hover:bg-green-400 focus:outline-none focus:ring focus:ring-green-800 focus:ring-opacity-80"
-      >Login page</NuxtLink>
+      >SignUp page</NuxtLink>
     </div>
    
     <div class="w-1/3 px-12 py-12 my-24 mx-24">
       <form action class="space-y-3">
         <div>
-          <h1 class="font-bold text-lg md:text-xl xl:text-2xl tracking-tight">Register</h1>
+          <h1 class="font-bold text-lg md:text-xl xl:text-2xl tracking-tight">Login</h1>
         </div>
         <div class="space-y-2">
           <label for="email" class="block font-medium tracking-tight">Email</label>
@@ -34,10 +34,10 @@
         </div>
         <div class="flex justify-end">
           <button
-            @click="createUser"
+            @click="loginUser"
             type="button"
             class="inline-flex items-center text-white px-5 py-2 rounded-lg overflow-hidden focus:outline-none bg-indigo-500 hover:bg-indigo-600 font-semibold tracking-tight"
-          >Register</button>
+          >Login</button>
         </div>
       </form>
     </div>
@@ -52,18 +52,18 @@ export default {
     password: ""
   }),
   methods: {
-    async createUser() {
-      console.log("strted")
+    async loginUser() {
+      console.log("strted");
       try {
-        await this.$fire.auth.createUserWithEmailAndPassword(
+        await this.$fire.auth.signInWithEmailAndPassword(
           this.email,
           this.password
-        )
-        this.$router.push('/aftersignup')
+        );
+        this.$router.push("/afterlogin");
       } catch (e) {
-        handleError(e)
+        handleError(e);
       }
     }
   }
-}
+};
 </script>
