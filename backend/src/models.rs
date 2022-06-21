@@ -13,7 +13,7 @@ pub struct User {
     pub major: Option<String>,
 }
 
-#[derive(Deserialize, Insertable)]
+#[derive(Deserialize, Insertable, Debug)]
 #[table_name = "users"]
 pub struct NewUser {
     pub email: String,

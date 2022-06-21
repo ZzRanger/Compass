@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:14
+    environment:
+      - POSTGRES_USER=dboperator
+      - POSTGRES_PASSWORD=operatorpass123
+      - POSTGRES_DB=compass
+    ports:
+      - "5243:5432" 
