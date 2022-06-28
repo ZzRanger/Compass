@@ -1,11 +1,11 @@
-use serde::{Deserialize};
+use serde::{Deserialize, Serialize};
 
 use crate::schema::users;
 
-#[derive(Deserialize, Queryable)]
+#[derive(Deserialize, Queryable, Serialize)]
 pub struct User {
     pub id: i32,
-    pub email: Option<String>,
+    pub email: String,
     pub first_name: Option<String>,
     pub last_name: Option<String>,
     pub profile_picture_uri: Option<String>,
