@@ -30,8 +30,9 @@ async fn main() -> std::io::Result<()> {
                 db_connection: db_connection,
             }))
             .service(endpoints::hello)
-            .service(endpoints::create_user).
-            service(endpoints::delete_user)
+            .service(endpoints::get_user)
+            .service(endpoints::create_user)
+            .service(endpoints::delete_user)
     })
     .bind((
         "127.0.0.1", 
