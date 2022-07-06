@@ -15,7 +15,8 @@ use schema::users;
 
 use crate::schema::users::dsl;
 
-struct AppState {
+
+pub struct AppState {
     db_connection: PgConnection,
 }
 
@@ -93,6 +94,7 @@ async fn main() -> std::io::Result<()> {
             .service(create_user)
             .service(delete_user)
             .service(update_user)
+
     })
     .bind((
         "127.0.0.1",
