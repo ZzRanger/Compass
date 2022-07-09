@@ -6,6 +6,8 @@ import store from "../redux/store";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import NavigationBar from "../components/NavigationBar";
 import { Stack } from "@mui/material";
+import CreateAccount from "../components/onboarding/CreateAccount";
+import OnboardingMain from "../components/onboarding/OnboardingMain";
 
 initFirebase();
 
