@@ -4,7 +4,7 @@ use crate::AppState;
 use crate::schema;
 
 use diesel::prelude::*;
-use actix_web::{web, get, post, Responder, HttpResponse, delete};
+use actix_web::{web, get, post, Responder, HttpResponse, delete, put};
 use schema::users::dsl::*;
 
 #[get("/")]
@@ -31,6 +31,31 @@ async fn create_user(state: web::Data<AppState>, user: web::Json<NewUser>) -> im
         Ok(results) => HttpResponse::Ok().body(results[0].id.to_string()),
         Err(_) => HttpResponse::InternalServerError().body("Failed to create user!"),
     }
+}
+
+// TODO documentation
+#[put("/users/{id}")]
+async fn update_user(data: web::Data<AppState>, user: web::Json<NewUser>, path: web::Path<i32>) -> impl Responder {
+    let id_number = path.into_inner();
+    let user = user.0.mutate(id_number);
+    match diesel::update(users.filter(id.eq(id_number)))
+        .set(&user)
+        .execute(&data.db_connection) {
+            Ok(0) => create_user_logic(data, user.mutate()), // Create a new user
+            Ok(_) => HttpResponse::Ok().body("User has been updated"),
+            Err(_) => HttpResponse::InternalServerError().body("We couldn't update this user"),
+        }
+}
+
+// TODO documentation - helper function for PUT users/{id} endpoint
+// TODO our code can be refactored to reduce repetition of code between the POST and PUT endpoints for users
+fn create_user_logic(data: web::Data<AppState>, user: NewUser) -> HttpResponse {
+    match diesel::insert_into(schema::users::table)
+        .values(user)
+        .execute(&data.db_connection) {
+            Ok(_) => HttpResponse::Ok().body(format!("Success. Created user.")),
+            Err(_) => HttpResponse::InternalServerError().body("Failed to create user!"),
+        }
 }
 
 // Deletes a user from a user id.
