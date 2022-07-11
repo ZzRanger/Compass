@@ -16,7 +16,7 @@ export default function CreateAccount() {
     return (
         <div style = {{height: "calc(100vh - 64px)"}} className="flex flex-col justify-center items-center">
             <Box sx = {{ backgroundColor: "#EDE2D1", borderTopLeftRadius: 10, borderTopRightRadius: 10}} width="600px" height="90px" display="flex" justifyContent="center" alignItems="center">
-                <Typography fontSize="25px" color="#6D4C71" fontFamily="Rajdhani">
+                <Typography fontWeight="bold" fontSize="25px" color="#6D4C71" fontFamily="Rajdhani">
                     CREATE AN ACCOUNT
                 </Typography>
             </Box>
@@ -28,18 +28,17 @@ export default function CreateAccount() {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            style={{  background: "linear-gradient(to right top, rgba(209, 170, 104, 0.3), rgba(61, 34, 137, 0.15))" }}
+            style={{  background: "linear-gradient(to right, rgba(209, 170, 104, 0.3), rgba(61, 34, 137, 0.15))" }}
             >
                
                 <Grid
                 container
-                spacing={0}
                 direction="column"
                 alignItems="center"
                 justifyContent="center"
                 width="450px"
                 height="400px"
-                style={{  backgroundColor: "white" }}
+                style={{  backgroundColor: "white", borderRadius: 10 }}
                 >
                     <div style = {{height: "400px"}} className="flex flex-col justify-evenly">
                         <Grid item sx={{width: "400px"}}>
@@ -129,7 +128,7 @@ export default function CreateAccount() {
                 </Grid>
                 <div style = {{width: "550px"}} className="flex justify-end pt-5 pr-12">
                     <Button variant="contained" style = {{backgroundColor: "#6D4C71", borderRadius: 10}}>
-                        <Typography fontFamily="Rajdhani">
+                        <Typography sx={{textTransform: "none"}} fontFamily="Rajdhani">
                             Create
                         </Typography>
                     </Button>
