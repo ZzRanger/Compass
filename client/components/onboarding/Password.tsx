@@ -1,10 +1,11 @@
 import { Circle } from "@mui/icons-material";
-import { Box, Button, FormControl, Grid, Input, InputLabel, List, ListItem, ListSubheader, makeStyles, MenuItem, Select, SelectChangeEvent, TextField, Typography } from "@mui/material";
+import { Box, Button, FormControl, Grid, Input, InputLabel, List, ListItem, ListItemText, ListSubheader, makeStyles, MenuItem, Select, SelectChangeEvent, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 
 export default function Password() {
     const [studyLevel, setStudyLevel] = useState("");
     const [major, setMajor] = useState("");
+    const [dense] = useState(true);
 
     const handleStudyLevel = (event: SelectChangeEvent) => {
         setStudyLevel(event.target.value as string);
@@ -38,37 +39,44 @@ export default function Password() {
                 alignItems="center"
                 justifyContent="center"
                 width="450px"
-                height= "300px"
+                height= "350px"
                 style={{  backgroundColor: "white", borderRadius: 10 }}
                 >
-                    <Grid item sx={{width: "350px"}}>
-                        <Typography color="#6D4C71" fontFamily="Rajdhani" fontSize="20px">
-                        Create a strong password at least 8 characters long with the minimum:
-                        <ol style={{ listStyleType: 'decimal' }}>
-                            <li>Banana</li>
-                            <li>Pineapple</li>
-                            <li>Cherry</li>
-                        </ol>
-                        </Typography>
-                    </Grid>
-                    <Grid item sx={{width: "350px"}}>
-                        <div className = "flex flex-col justify-evenly">
-                            <Box>
-                                <TextField InputLabelProps={{ style: {fontSize: 14, fontFamily: "Rajdhani"}}}  inputProps={{ style: {fontSize: 14, fontFamily: "Rajdhani"}}}  sx={{width: "300px", "& .MuiInputLabel-root": {color: '#D1AA68'}, "& .MuiOutlinedInput-root": {"& > fieldset": { borderColor: "#D1AA68" },'&:hover fieldset': {borderColor: '#D1AA68',},'&.Mui-focused fieldset': {borderColor: '#D1AA68',},}}} size="small" placeholder="Type your password" />
-                            </Box>
-                            <Box>
-                                <TextField InputLabelProps={{style: {fontSize: 14, fontFamily: "Rajdhani"}}}  inputProps={{ style: {fontSize: 14, fontFamily: "Rajdhani"}}}  sx={{width: "300px","& .MuiInputLabel-root": {color: '#D1AA68'}, "& .MuiOutlinedInput-root": {"& > fieldset": { borderColor: "#D1AA68" },'&:hover fieldset': {borderColor: '#D1AA68',},'&.Mui-focused fieldset': {borderColor: '#D1AA68',},}}} size="small" placeholder="Confirm your password" />
-                            </Box>
-                        </div>
-                    </Grid>
+                    <div style={{height: "300px"}}>
+                        <Grid item sx={{width: "350px"}}>
+                            <Typography color="#6D4C71" fontFamily="Rajdhani" fontSize="20px">
+                            Create a strong password at least 8 characters long with the minimum:
+                                <List disablePadding dense={dense} sx={{ listStyleType: 'disc' }}>
+                                    <Box sx={{pl:4}}>
+                                        <ListItem disablePadding disableGutters={true} sx={{ display: 'list-item' }}>
+                                            1 letter
+                                        </ListItem>
+                                        <ListItem disablePadding disableGutters={true} sx={{ display: 'list-item' }}>1 number</ListItem>
+                                        <ListItem disablePadding disableGutters={true} sx={{ display: 'list-item' }}>1 special character</ListItem>
+                                    </Box>
+                                </List>
+                            </Typography>
+                        </Grid>
+                        <Grid item sx={{width: "350px"}}>
+                            <div style={{height: "150px"}} className = "flex flex-col justify-evenly">
+                                <Box>
+                                    <TextField InputLabelProps={{ style: {fontSize: 14, fontFamily: "Rajdhani"}}}  inputProps={{ style: {fontSize: 14, fontFamily: "Rajdhani"}}}  sx={{width: "300px", "& .MuiInputLabel-root": {color: '#D1AA68'}, "& .MuiOutlinedInput-root": {"& > fieldset": { borderColor: "#D1AA68" },'&:hover fieldset': {borderColor: '#D1AA68',},'&.Mui-focused fieldset': {borderColor: '#D1AA68',},}}} size="small" placeholder="Type your password" />
+                                </Box>
+                                <Box>
+                                    <TextField InputLabelProps={{style: {fontSize: 14, fontFamily: "Rajdhani"}}}  inputProps={{ style: {fontSize: 14, fontFamily: "Rajdhani"}}}  sx={{width: "300px","& .MuiInputLabel-root": {color: '#D1AA68'}, "& .MuiOutlinedInput-root": {"& > fieldset": { borderColor: "#D1AA68" },'&:hover fieldset': {borderColor: '#D1AA68',},'&.Mui-focused fieldset': {borderColor: '#D1AA68',},}}} size="small" placeholder="Confirm your password" />
+                                </Box>
+                            </div>
+                        </Grid>
+                    </div>
                 </Grid>
                 <div style = {{width: "550px"}} className="flex justify-end pt-5 pr-12">
                     <Button variant="contained" style = {{backgroundColor: "#6D4C71", borderRadius: 10}}>
                         <Typography sx={{textTransform: "none"}} fontFamily="Rajdhani">
-                            Next
+                            Finish
                         </Typography>
                     </Button>
                 </div>
+                
             </Box>
         </div>
         
