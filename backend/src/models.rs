@@ -1,8 +1,9 @@
 use serde::Deserialize;
+use serde::Serialize;
 
 use crate::schema::users;
 
-#[derive(Deserialize, Queryable, AsChangeset, Debug)]
+#[derive(Deserialize, Queryable, AsChangeset, Debug, Serialize)]
 
 pub struct User {
     pub id: i32,
@@ -18,7 +19,7 @@ impl User {
     //rename and refactor
     pub fn mutate(self) -> NewUser {
         NewUser {
-            email: self.email.unwrap(),
+            email: self.email,
             first_name: self.first_name.unwrap(),
             last_name: self.last_name.unwrap(),
             profile_picture_uri: self.profile_picture_uri,
@@ -42,7 +43,7 @@ impl NewUser {
     pub fn mutate(self, id: i32) -> User {
         User {
             id,
-            email: Some(self.email),
+            email: self.email,
             first_name: Some(self.first_name),
             last_name: Some(self.last_name),
             profile_picture_uri: self.profile_picture_uri,
